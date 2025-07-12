@@ -1,0 +1,31 @@
+<nav class="navbar navbar-lg">
+    <div class="navbar-brand">
+        <mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      My Profile
+    </ng-template>
+    <app-profile></app-profile>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Create New User
+    </ng-template>
+    <app-register></app-register>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      List of User
+    </ng-template>
+  <app-list-user></app-list-user>
+  </mat-tab>
+</mat-tab-group>
+
+    </div>
+</nav>
+

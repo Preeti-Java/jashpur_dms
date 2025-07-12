@@ -1,0 +1,110 @@
+<div class="mat-elevation-z8">
+<mat-card class="filter-card">
+  <div class="header">
+    <h6>Entries Filter</h6>
+  </div>
+
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>District *</mat-label>
+      <mat-select formControlName="district">
+        <mat-option *ngFor="let d of districts" [value]="d">{{ d }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Village *</mat-label>
+      <mat-select formControlName="village">
+        <mat-option *ngFor="let v of villages" [value]="v">{{ v.villageName}} : {{(v.villageHindiName) }} ({{v.villageCode}})</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Khasra No. *</mat-label>
+      <input matInput formControlName="khasraNo" />
+    </mat-form-field>
+
+  <br>
+
+    <div class="button-wrapper">
+       <button mat-flat-button color="warn" type="submit" class="go-btn">GO</button>
+       <button mat-flat-button color="warn" onclick="reset()" class="go-btn">RESET</button>
+    </div>
+
+  </form>
+</mat-card>
+<!-- Mat Table Section -->
+<mat-card *ngIf="showTable" class="table-card">
+  <div class="header">
+    <h4>DOCUMENTS</h4>
+  </div>
+
+  
+  <table mat-table [dataSource]="fileData" class="mat-elevation-z1" matSort>
+
+    <ng-container matColumnDef="district">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+      <td mat-cell *matCellDef="let row"> {{ row.district }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fileId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> FileId </th>
+      <td mat-cell *matCellDef="let row"> {{ row.fileId }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="tehsil">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tehsil</th>
+      <td mat-cell *matCellDef="let row"> {{ row.tehsil }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tehsilHindi">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tehsil Hindi </th>
+      <td mat-cell *matCellDef="let row"> {{ row.tehsilHindi }} </td>
+    </ng-container>  
+
+    <ng-container matColumnDef="village">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Village </th>
+      <td mat-cell *matCellDef="let row"> {{ row.village }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="villageHindiName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Village Hindi</th>
+      <td mat-cell *matCellDef="let row"> {{ row.villageHindiName }} </td>
+    </ng-container>
+
+     <ng-container matColumnDef="villageCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Village Code </th>
+      <td mat-cell *matCellDef="let row"> {{ row.villageCode }} </td>
+    </ng-container> 
+
+     <ng-container matColumnDef="khasraNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Khasra No. </th>
+      <td mat-cell *matCellDef="let row"> {{ row.khasraNo }} </td>
+    </ng-container>  
+
+     <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
+      <td mat-cell *matCellDef="let row"> {{ row.fromYear }}-{{ row.toYear }} </td>
+    </ng-container>  
+
+     <ng-container matColumnDef="totalPage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Page </th>
+      <td mat-cell *matCellDef="let row"> {{ row.totalPage }} </td>
+    </ng-container>  
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button color="primary">View</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</mat-card>
+</div>

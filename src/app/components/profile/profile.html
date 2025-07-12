@@ -1,0 +1,25 @@
+<div class="user-profile-container">
+  <!-- Left card: Avatar + Name -->
+  <mat-card class="profile-card left">
+    <img mat-card-image src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Avatar" />
+    <mat-card-title>{{ userData.username }}</mat-card-title>
+    <mat-card-subtitle>{{ userData.roles[0].name}}</mat-card-subtitle>
+    <p class="location">{{ userData?.password }}</p>
+    <div class="button-group">
+      <button mat-flat-button color="primary">Disbale</button>
+      <button mat-stroked-button color="primary">Delete</button>
+    </div>
+  </mat-card>
+
+  <!-- Right card: Details -->
+  <mat-card class="profile-card right">
+    <mat-card-content>
+      <div class="info-row"><strong>Full Name:</strong> {{ userData?.firstname }} {{ userData?.lastname }}</div>
+      <div class="info-row"><strong>Email:</strong> {{ userData?.email }}</div>
+      <div class="info-row"><strong>Phone:</strong>  {{ userData?.mobile }}</div>
+      <!-- <div class="info-row"><strong>Mobile:</strong> (320) 380-4539</div> -->
+      <div class="info-row"><strong>Address:</strong> Jashpur, Chattisgarh</div>
+      <button mat-flat-button color="primary" class="edit-btn">Edit</button>
+    </mat-card-content>
+  </mat-card>
+</div>

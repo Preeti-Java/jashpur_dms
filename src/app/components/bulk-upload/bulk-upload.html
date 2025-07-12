@@ -1,0 +1,40 @@
+<div class="mat-elevation-z8">
+  <mat-card class="filter-card">
+  <div class="header">
+    <h6>Bulk Upload Document</h6>
+  </div>
+
+
+    <div class="section">
+    <p><strong>Download Csv Template</strong></p>
+    <button mat-stroked-button color="primary" (click)="downloadCSV()">Download</button>
+     </div>
+    
+
+
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" class="upload-container">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Bulk PDF Folder Path</mat-label>
+    <input matInput formControlName="bulkPdfPath" placeholder="/assets/pdfs" />
+  </mat-form-field>
+
+  <label><strong>Select CSV File:</strong></label>
+  <input type="file" (change)="onCsvChange($event)" accept=".csv" />
+
+  <button mat-raised-button color="primary" type="submit">Start Upload</button>
+</form>
+
+<div *ngIf="uploadStatus.length > 0" class="status-container">
+  <h3>Upload Progress</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let status of uploadStatus">
+      <span class="file-id">{{ status.fileId }}</span>
+      <mat-icon *ngIf="status.status === 'uploading'" color="accent">cloud_upload</mat-icon>
+      <mat-icon *ngIf="status.status === 'success'" color="primary">check_circle</mat-icon>
+      <mat-icon *ngIf="status.status === 'failed'" color="warn">error</mat-icon>
+      <span class="status-label">{{ status.status }}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+</mat-card>
+</div>

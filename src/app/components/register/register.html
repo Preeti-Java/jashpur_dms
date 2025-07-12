@@ -1,0 +1,56 @@
+<div class="mat-elevation-z8">
+  <mat-card class="filter-card">
+  <div class="header">
+    <h6>Add User</h6>
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-container">
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+
+       <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" />
+      </mat-form-field>
+
+     
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile No</mat-label>
+        <input matInput formControlName="mobile" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email Id</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+       <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstname" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastname" />
+      </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="roles">
+          <mat-option *ngFor="let role of listOfRoles" [value]="role">{{ role }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+
+      <div class="button-wrapper">
+       <button mat-flat-button color="warn" type="submit" class="go-btn">GO</button>
+       <button mat-flat-button color="warn" onclick="reset()" class="go-btn">RESET</button>
+    </div>
+   
+  </form>
+</mat-card>
+</div>

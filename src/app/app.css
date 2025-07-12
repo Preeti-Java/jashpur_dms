@@ -1,0 +1,13 @@
+#app {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin-top: 0px;
+  }
+  .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .navbar-nav .nav-link:hover {
+    color: white;
+  }

@@ -1,0 +1,82 @@
+
+<div class="mat-elevation-z8">
+  <mat-card class="filter-card">
+  <div class="header">
+    <h6>Users Filter</h6>
+  </div>
+
+  <form [formGroup]="UserfilterForm" (ngSubmit)="onSubmit(UserfilterForm.get('roles')?.value)" class="form-container">
+ <mat-form-field appearance="outline">
+      <mat-label>Role *</mat-label>
+      <mat-select formControlName="roles">
+        <mat-option *ngFor="let v of listOfRoles" [value]="v">{{v}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+ <div class="button-wrapper">
+       <button mat-flat-button color="warn" type="submit" class="go-btn">GO</button>
+       <button mat-flat-button color="warn" onclick="reset()" class="go-btn">RESET</button>
+    </div>
+
+  </form>
+</mat-card>
+
+<!-- Mat Table Section -->
+<mat-card *ngIf="showTable" class="table-card">
+  <div class="header">
+    <h2>DOCUMENTS</h2>
+  </div>
+
+  <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z1" matSort>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+      <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+    </ng-container>
+
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </th>
+      <td mat-cell *matCellDef="let row"> {{row.firstname}} </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </th>
+      <td mat-cell *matCellDef="let row"> {{row.lastname}} </td>
+    </ng-container>
+
+      <!-- mobile Column -->
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+      <td mat-cell *matCellDef="let row"> {{row.mobile}} </td>
+    </ng-container>
+
+    <!-- roles Column -->
+    <ng-container matColumnDef="roles">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Roles </th>
+      <td mat-cell *matCellDef="let row"> {{row.roles[0].name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    
+  </table>
+ <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+ 
+</mat-card>
+</div>
+
+
+

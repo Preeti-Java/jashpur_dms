@@ -1,0 +1,34 @@
+<div class="login-container">
+    <div class="login-box">
+      <img src="assets/logo.jpg" alt="Company Logo" class="logo" />
+  
+      <h2>Login</h2>
+
+      <div class="row mx-2" *ngIf="errorMessage">
+        <div class="col-12 text-center alert alert-danger" role="alert">{{errorMessage}}</div>
+    </div>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input formControlName="username" type="text" id="username" />
+          <div class="error" *ngIf="submitted && loginForm.controls['username']?.errors">
+            Username is required
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input formControlName="password" type="password" id="password" />
+          <div class="error" *ngIf="submitted && loginForm.controls['password']?.errors">
+            Password is required
+          </div>
+        </div>
+  
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  
+  

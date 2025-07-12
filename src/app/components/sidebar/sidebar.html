@@ -1,0 +1,56 @@
+<div class="sidebar" [ngClass]="{ 'sidebar-collapsed': isSidebarCollapsed }">
+  
+  <div class="sidebar-menu">
+    <ul>
+      <!-- Dashboard -->
+      <li class="sidebar-menu-item">
+        <a routerLink="/dashboard" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="sidebar-item-text">Dashboard </span>
+        </a>
+      </li>
+
+      <!-- Search -->
+      <li class="sidebar-menu-item">
+        <a [routerLink]="['search']" routerLinkActive="active" class="sidebar-item">
+          <i class="fas fa-search"></i>
+          <span class="sidebar-item-text">Search</span>
+        </a>
+      </li>
+
+      <!-- User -->
+      <li class="sidebar-menu-item" *ngIf="hasRole('ROLE_SUPERADMIN')">
+        <a [routerLink]="['user']" class="sidebar-item">
+          <i class="fas fa-user"></i>
+          <span class="sidebar-item-text">User</span>
+        </a>
+      </li>
+
+      <!-- Upload (for admin/superadmin) -->
+      <li class="sidebar-menu-item" *ngIf="hasRole('ROLE_ADMIN') || hasRole('ROLE_SUPERADMIN')">
+        <a [routerLink]="['upload']" routerLinkActive="active"  class="sidebar-item">
+          <i class="fas fa-upload"></i>
+          <span class="sidebar-item-text">Upload</span>
+        </a>
+      </li>
+
+      <!-- Messages -->
+      <li class="sidebar-menu-item">
+        <a [routerLink]="['message']" class="sidebar-item">
+          <i class="fas fa-envelope"></i>
+          <span class="sidebar-item-text">Messages</span>
+        </a>
+      </li>
+
+      <!-- Logout -->
+      <li class="sidebar-menu-item">
+        <a (click)="logout()" class="sidebar-item">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="sidebar-item-text">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+ 
